@@ -4,7 +4,7 @@ let card1 = null;
 let card2 = null;
 firstResult = null;
 secondResult = null;
-let moves = 0;
+let movements = 0;
 //Generate random numbers
 let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 numbers = numbers.sort(() => {
@@ -32,6 +32,6 @@ function uncover(id) {
     card2.disabled = true;
 
     // Increase movements
-    moves++;
+    movements++;
   }
 }
