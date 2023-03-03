@@ -5,10 +5,17 @@ let card2 = null;
 firstResult = null;
 secondResult = null;
 let movements = 0;
+let success = 0;
+
+// Pointing to document
+
+let showmovements = document.getElementById("movements");
+let showSucces = document.getElementById("success");
 //Generate random numbers
 let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 numbers = numbers.sort(() => {
   return Math.random() - 0.5;
+  console.log(numbers);
 });
 
 // Principal function
@@ -33,5 +40,15 @@ function uncover(id) {
 
     // Increase movements
     movements++;
+    showmovements.innerHTML = `Movimientos: ${movements}`;
+  }
+
+  if (firstResult == secondResult) {
+    // Reset of UncoverCard
+    uncoverCard = 0;
+
+    // Increase Check
+    success++;
+    showSucces.innerHTML = `Aciertos: ${success}`;
   }
 }
