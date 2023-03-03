@@ -50,5 +50,18 @@ function uncover(id) {
     // Increase Check
     success++;
     showSucces.innerHTML = `Aciertos: ${success}`;
+
+    if (success == 8) {
+      showSucces.innerHTML = `Aciertos: ${success}🥳`;
+    }
+  } else {
+    // Show values momentarily cover again
+    setTimeout(() => {
+      card1.innerHTML = "";
+      card2.innerHTML = "";
+      card1.disabled = false;
+      card2.disabled = false;
+      uncoverCard = 0;
+    }, 2000);
   }
 }
