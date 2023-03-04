@@ -15,17 +15,18 @@ let showSucces = document.getElementById("success");
 let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 numbers = numbers.sort(() => {
   return Math.random() - 0.5;
-  console.log(numbers);
 });
-
+console.log(numbers);
 // Principal function
 function uncover(id) {
   uncoverCard++;
-  console.log(numbers);
+
+  console.log(uncoverCard);
+
   if (uncoverCard == 1) {
     card1 = document.getElementById(id);
     firstResult = numbers[id];
-    card1.innerHTML = numbers[id];
+    card1.innerHTML = firstResult;
 
     // Disable first button
     card1.disabled = true;
@@ -33,7 +34,7 @@ function uncover(id) {
   } else if (uncoverCard == 2) {
     card2 = document.getElementById(id);
     secondResult = numbers[id];
-    card2.innerHTML = numbers[id];
+    card2.innerHTML = secondResult;
 
     // Disable second button
     card2.disabled = true;
@@ -53,12 +54,13 @@ function uncover(id) {
 
     if (success == 8) {
       showSucces.innerHTML = `Aciertos: ${success}🥳`;
+      showmovements.innerHTML = `Movimientos: ${movements}😎`;
     }
   } else {
     // Show values momentarily cover again
     setTimeout(() => {
-      card1.innerHTML = "";
-      card2.innerHTML = "";
+      card1.innerHTML = " ";
+      card2.innerHTML = " ";
       card1.disabled = false;
       card2.disabled = false;
       uncoverCard = 0;
