@@ -6,19 +6,46 @@ firstResult = null;
 secondResult = null;
 let movements = 0;
 let success = 0;
+let timing = false;
+let timer = 30;
+let initialTimer = 30;
+let resetTimer = null;
 
 // Pointing to document
-
 let showmovements = document.getElementById("movements");
 let showSucces = document.getElementById("success");
+let showTime = document.getElementById("time_left");
 //Generate random numbers
 let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 numbers = numbers.sort(() => {
   return Math.random() - 0.5;
 });
 console.log(numbers);
+
+function counterTime() {
+  resetTimer = setInterval(() => {
+    timer--;
+    showTime.innerHTML = `Tiempo: ${timer} segundinos`;
+    if (timer == 0) {
+      clearInterval(resetTimer);
+      blockCard();
+    }
+  }, 1000);
+}
+
+function blockCard() {
+  for (let i = 0; i <= 15; i++) {
+    let cardBlock = document.getElementById[i];
+    cardBlock.innerHTML = numbers[i];
+    cardBlock.disabled = true;
+  }
+}
 // Principal function
 function uncover(id) {
+  if (timing == false) {
+    counterTime();
+    timing = true;
+  }
   uncoverCard++;
 
   console.log(uncoverCard);
@@ -53,7 +80,11 @@ function uncover(id) {
     showSucces.innerHTML = `Aciertos: ${success}`;
 
     if (success == 8) {
+      clearInterval(resetTimer);
       showSucces.innerHTML = `Aciertos: ${success}🥳`;
+      showTime.innerHTML = `Fantástico! 🎊 solo fueron ${
+        initialTimer - timer
+      } segundinos `;
       showmovements.innerHTML = `Movimientos: ${movements}😎`;
     }
   } else {
@@ -64,6 +95,6 @@ function uncover(id) {
       card1.disabled = false;
       card2.disabled = false;
       uncoverCard = 0;
-    }, 2000);
+    }, 800);
   }
 }
