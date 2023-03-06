@@ -15,6 +15,8 @@ let showTime = document.getElementById("time_left");
 let winAudio = new Audio("./sound/win.wav");
 let loseAudio = new Audio("/sound/lose.wav");
 let clickAudio = new Audio("/sound/click.wav");
+let rightAudio = new Audio("sound/right.wav");
+let wrongAudio = new Audio("/sound/wrong.wav");
 
 //Generate random numbers
 let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
@@ -85,7 +87,9 @@ function uncover(id) {
       // Increase Check
       success++;
       showSucces.innerHTML = `Aciertos: ${success}`;
+      rightAudio.play();
     } else {
+      wrongAudio.play();
       // Show values momentarily cover again
       setTimeout(() => {
         card1 = document.getElementById(firstId);
