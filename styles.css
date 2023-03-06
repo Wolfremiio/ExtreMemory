@@ -23,7 +23,6 @@ button{
     height: 100px;
     width:  100px;
     font-size: 40px;
-    color: black;
     font-weight: bold;
 
 
@@ -50,4 +49,9 @@ button{
 }
 footer{
     text-align: center;
+}
+a{
+    text-decoration: none;
+}
+img{ width: 80%;
 }
